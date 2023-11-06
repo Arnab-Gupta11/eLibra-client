@@ -99,7 +99,7 @@ const Navbar = () => {
 
             <a className="flex items-center gap-4">
               <span>
-                <img className="md:w-24 md:h-20" src="https://i.ibb.co/Tr8BRhn/logo.png" alt="" />
+                <img className="w-14 h-10 md:w-24 md:h-20" src="https://i.ibb.co/Tr8BRhn/logo.png" alt="" />
               </span>
               {/* <div className="text-xl md:text-3xl font-bold ">
                 <span className="text-[#FF6A25] font-extrabold">Auto</span>
