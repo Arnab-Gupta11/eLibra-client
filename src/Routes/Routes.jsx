@@ -7,6 +7,7 @@ import Books from "../Pages/Home/Category/books";
 import AddBooks from "../Pages/AddBooks/AddBooks";
 import AllBooks from "../Pages/AllBooks/AllBooks";
 import BorrowedBooks from "../Pages/BorrowedBooks/BorrowedBooks";
+import BookDetails from "../Pages/Home/Category/BookDetails";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
         path: "/:name",
         element: <Books></Books>,
         loader: ({ params }) => fetch(`https://library-management-server-ashen.vercel.app/books/${params.name}`),
+      },
+      {
+        path: "/:category/:id",
+        element: <BookDetails></BookDetails>,
+        loader: ({ params }) => fetch(`https://library-management-server-ashen.vercel.app/${params.id}`),
       },
     ],
   },

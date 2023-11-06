@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import Rating from "../../Shared/Rating/Rating";
+import { Link } from "react-router-dom";
 const BooksCard = ({ book }) => {
-  const { image, name, authore_name, rating, category } = book;
+  const { image, name, authore_name, rating, category, _id } = book;
   return (
     <div>
       <div className="card  bg-base-100 shadow-xl rounded-b-md">
@@ -18,9 +19,13 @@ const BooksCard = ({ book }) => {
           <h3 className="text-[#676767]">{authore_name}</h3>
           <div className="flex justify-between mb-6 items-center pr-5">
             <div className="">{<Rating rating={rating}></Rating>}</div>
-            <button className="rounded-md hover:bg-[#2ECA7F] normal-case hover:text-white px-5 text-base font-semibold py-3 bg-white border-2 border-[#2ECA7F] text-[#2ECA7F] ">
-              See Details
-            </button>
+            <div>
+              <Link to={`/${category}/${_id}`}>
+                <button className="rounded-md hover:bg-[#2ECA7F] normal-case hover:text-white px-5 text-base font-semibold py-3 bg-white border-2 border-[#2ECA7F] text-[#2ECA7F] ">
+                  See Details
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
