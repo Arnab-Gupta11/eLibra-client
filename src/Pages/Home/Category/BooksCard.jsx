@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import Rating from "../../Shared/Rating/Rating";
 const BooksCard = ({ book }) => {
   const { image, name, authore_name, rating, category } = book;
   return (
@@ -16,7 +17,7 @@ const BooksCard = ({ book }) => {
           <h2 className="card-title text-[#1A2D62]">{name}</h2>
           <h3 className="text-[#676767]">{authore_name}</h3>
           <div className="flex justify-between mb-6 items-center pr-5">
-            <div className="badge badge-outline">{rating}</div>
+            <div className="">{<Rating rating={rating}></Rating>}</div>
             <button className="rounded-md hover:bg-[#2ECA7F] normal-case hover:text-white px-5 text-base font-semibold py-3 bg-white border-2 border-[#2ECA7F] text-[#2ECA7F] ">
               See Details
             </button>
