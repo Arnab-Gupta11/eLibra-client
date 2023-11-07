@@ -4,8 +4,7 @@ import BooksCard from "./BooksCard";
 const Books = () => {
   const books = useLoaderData();
   console.log(books);
-  //
-  //   console.log();
+
   return (
     <div className="bg-[#F6F3ED] min-h-screen">
       <div className="max-w-screen-xl mx-auto pt-10">
