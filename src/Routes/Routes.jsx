@@ -42,12 +42,12 @@ const router = createBrowserRouter([
       {
         path: "/:name",
         element: <Books></Books>,
-        loader: ({ params }) => fetch(`https://library-management-server-ashen.vercel.app/books/${params.name}`),
+        loader: ({ params }) => fetch(`https://library-management-server-ashen.vercel.app/books/category/${params.name}`),
       },
       {
         path: "/:category/:id",
         element: <BookDetails></BookDetails>,
-        loader: ({ params }) => fetch(`https://library-management-server-ashen.vercel.app/${params.id}`),
+        loader: ({ params }) => fetch(`https://library-management-server-ashen.vercel.app/books/${params.id}`),
       },
     ],
   },

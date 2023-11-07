@@ -1,9 +1,13 @@
 import { useLoaderData } from "react-router-dom";
 import Rating from "../../Shared/Rating/Rating";
+import Modal from "./Modal";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProviders";
 
 const BookDetails = () => {
+  const { user } = useContext(AuthContext);
+  // console.log(user.displayName);
   const loadedData = useLoaderData();
-  console.log(loadedData);
   const { name, image, rating, authore_name, quantity, short_description, category } = loadedData;
   return (
     <div className="bg-[#F6F9FF] min-h-screen">
@@ -29,13 +33,17 @@ const BookDetails = () => {
             </p>
             <p className="text-[#676767] text-base font-medium md:text-lg space-y-2 text-justify">
               {short_description}
-              <button className="text-lg font-bold text-green-600 hover:underline">Read more...</button>
+              <button className="text-lg font-bold text-green-600 hover:underline disabled">Read more...</button>
             </p>
-
             <div>
-              <button className="rounded-md hover:bg-[#2ECA7F] normal-case hover:text-white px-7 text-base font-semibold py-2 bg-white border-2 border-[#2ECA7F] text-[#2ECA7F] mt-3">
+              <button
+                className="rounded-md hover:bg-[#2ECA7F] normal-case hover:text-white px-7 text-base font-semibold py-2 bg-white border-2 border-[#2ECA7F] text-[#2ECA7F] mt-3 "
+                onClick={() => document.getElementById("borrow").showModal()}
+                disabled={quantity === 0}
+              >
                 Borrow
               </button>
+              <Modal borrow={"borrow"} user={user} loadedData={loadedData}></Modal>
             </div>
           </div>
         </div>
