@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import Rating from "../Shared/Rating/Rating";
 import { Link } from "react-router-dom";
 const AllBooksCard = ({ book }) => {
-  const { image, name, authore_name, rating, category } = book;
+  const { _id, image, name, authore_name, rating, category } = book;
   return (
     <div>
       <div className="bg-white border border-gray-200 rounded-lg shadow ">
@@ -19,7 +19,7 @@ const AllBooksCard = ({ book }) => {
           </div>
 
           <div className="flex justify-end">
-            <Link to={``}>
+            <Link to={`/all-books/${_id}`}>
               <button className="rounded-md hover:bg-[#2ECA7F] normal-case hover:text-white px-5 text-base font-semibold py-2 bg-white border-2 border-[#2ECA7F] text-[#2ECA7F] ">
                 Update
               </button>
