@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 import HeadRoom from "react-headroom";
 import { AuthContext } from "../../../providers/AuthProviders";
+import DarkMode from "./Darkmode";
 
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
@@ -111,8 +112,9 @@ const Navbar = () => {
             <ul className="menu menu-horizontal px-1">{link}</ul>
           </div>
           <div className="navbar-end">
+            <DarkMode></DarkMode>
             {user ? (
-              <div className="dropdown dropdown-end z-50 ">
+              <div className="dropdown dropdown-end z-50 ml-5">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                   <div className="w-14 rounded-full border-2 border-[#FBB04B]">
                     <img src={user?.photoURL} />
@@ -142,7 +144,7 @@ const Navbar = () => {
               {user ? (
                 ""
               ) : (
-                <button className="rounded-[100px] bg-[#2ECA7F] normal-case text-white px-7 text-base font-medium py-3 hover:bg-white hover:border-2 hover:border-[#2ECA7F] hover:text-[#2ECA7F]">
+                <button className="rounded-[100px] bg-[#2ECA7F] normal-case text-white px-7 text-base font-medium py-3 hover:bg-white hover:border-2 hover:border-[#2ECA7F] hover:text-[#2ECA7F] ml-5">
                   <Link to={"/login"}>Login</Link>
                 </button>
               )}
