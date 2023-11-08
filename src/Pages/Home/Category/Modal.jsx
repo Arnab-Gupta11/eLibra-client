@@ -18,15 +18,17 @@ const Modal = ({ borrow, user, loadedData }) => {
     const currentDay = currentDate.toISOString().split("T")[0];
     // console.log(currentDay);
     // console.log(quantity)
-    const borrowBook = { image, name, category, borrowDate, currentDay, email };
-    console.log(borrowBook);
 
+    // console.log(borrowBook);
     const updateBook = { name, image, rating, authore_name, quantity: quantity - 1, short_description, category };
-    axios.post("https://library-management-server-ashen.vercel.app/borrows", borrowBook).then((res) => {
+    axios.put(`https://library-management-server-ashen.vercel.app/books/${_id}`, updateBook).then((res) => {
       console.log(res.data);
     });
-    axios.put(`https://library-management-server-ashen.vercel.app/books/${_id}`, updateBook).then((res) => {
-      if (res.data.modifiedCount > 0) {
+
+    const borrowBook = { image, name, category, borrowDate, currentDay, email, quantity: quantity - 1, book_id: _id };
+    axios.post("https://library-management-server-ashen.vercel.app/borrows", borrowBook).then((res) => {
+      console.log(res.data);
+      if (res.data.insertedId) {
         Swal.fire({
           title: "Success!",
           text: "Book Borrowed successfully",

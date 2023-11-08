@@ -18,7 +18,7 @@ const BooksCard = ({ book }) => {
           <h2 className="card-title text-[#1A2D62]">{name}</h2>
           <h3 className="text-[#676767]">{authore_name}</h3>
           <div className="flex justify-between mb-6 items-center pr-5">
-            <div className="">{<Rating rating={rating}></Rating>}</div>
+            <div className="text-[#2ECA7F] text-xl">{<Rating rating={rating}></Rating>}</div>
             <div>
               <Link to={`/${category}/${_id}`}>
                 <button className="rounded-md hover:bg-[#2ECA7F] normal-case hover:text-white px-5 text-base font-semibold py-3 bg-white border-2 border-[#2ECA7F] text-[#2ECA7F] ">

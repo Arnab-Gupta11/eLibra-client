@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Rating from "../../Shared/Rating/Rating";
 import Modal from "./Modal";
 import { useContext } from "react";
@@ -8,7 +8,7 @@ const BookDetails = () => {
   const { user } = useContext(AuthContext);
   // console.log(user.displayName);
   const loadedData = useLoaderData();
-  const { name, image, rating, authore_name, quantity, short_description, category } = loadedData;
+  const { _id, name, image, rating, authore_name, quantity, short_description, category } = loadedData;
   return (
     <div className="bg-[#F6F9FF] min-h-screen">
       <div className="max-w-screen-lg mx-auto pt-20">
@@ -28,12 +28,14 @@ const BookDetails = () => {
             <h3>
               by <span className="text-[#249961] text-lg font-semibold">{authore_name}</span>
             </h3>
-            <p className="my-4">
+            <p className="my-4 text-[#2ECA7F] text-xl">
               <Rating rating={rating}></Rating>
             </p>
             <p className="text-[#676767] text-base font-medium md:text-lg space-y-2 text-justify">
               {short_description}
-              <button className="text-lg font-bold text-green-600 hover:underline disabled">Read more...</button>
+              <Link to={`/${category}/${_id}/read`}>
+                <button className="text-lg font-bold text-green-600 hover:underline disabled">Read more...</button>
+              </Link>
             </p>
             <div>
               <button

@@ -18,7 +18,7 @@ const Rating = ({ rating }) => {
   });
   return (
     <div>
-      <h2 className="flex text-green-700 text-lg">{ratingStar}</h2>
+      <h2 className="flex ">{ratingStar}</h2>
     </div>
   );
 };

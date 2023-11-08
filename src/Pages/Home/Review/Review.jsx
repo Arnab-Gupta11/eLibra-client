@@ -6,9 +6,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-
+import "swiper/css/autoplay";
 // import required modules
-import { Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
 import axios from "axios";
 const Review = () => {
@@ -17,29 +17,29 @@ const Review = () => {
     axios.get("https://library-management-server-ashen.vercel.app/reviews").then((res) => setReviews(res.data));
   }, []);
   console.log(reviews);
-
+  const backgroundStyle = {
+    // minHeight: "100vh",
+    backgroundImage: 'url("https://i.ibb.co/GF1St2z/section-bg-5.png")',
+    backgroundSize: "cover",
+  };
   return (
-    <div className="bg-[#f7f1e6] mt-16">
+    <div className="mt-16" style={backgroundStyle}>
       <div className="max-w-screen-xl mx-auto py-20">
-        <div className=" px-5 text-center ">
-          <div className="">
-            <h4 className="text-[#FF6A25] text-2xl font-semibold mb-3">Testimonial</h4>
-            <h2 className="text-5xl font-bold text-[#2d373c] mb-4">What People say about</h2>
-            <div className="text-xl md:text-4xl font-bold ">
-              <span className="text-[#FF6A25] font-extrabold">Auto</span>
-              <span className="">WheelsToday</span>
-            </div>
-            <p className="text-base text-gray-600 font-medium mt-2 mb-7">Steer Toward Confidence: Reviews to Help You Choose Your Dream Car</p>
+        <div className=" px-5 ">
+          <div className="ml-5">
+            <h4 className="text-[#2ECA7F] text-2xl font-semibold mb-3">Testimonial</h4>
+            <h2 className="text-5xl font-bold text-[#1A2D62] mb-4">
+              What People <span className="text-[#2ECA7F]">says</span>
+            </h2>
           </div>
-          <div className="flex gap-5">
+          <div className="">
             <Swiper
               slidesPerView={3}
               spaceBetween={30}
-              pagination={{
-                clickable: true,
+              modules={[Autoplay]}
+              autoplay={{
+                delay: 3000,
               }}
-              modules={[Pagination]}
-              className="mySwiper"
             >
               {reviews?.map((review) => (
                 <SwiperSlide key={review._id}>
