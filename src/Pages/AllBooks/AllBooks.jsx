@@ -19,9 +19,13 @@ const AllBooks = () => {
           <div>
             <h2 className="text-5xl font-bold border-l-8 border-[#FBB04B] text-[#1A2D62] pl-4 mb-10 ml-5 ">All books</h2>
           </div>
-          <div className="flex gap-3 items-center rounded-md hover:bg-[#2ECA7F] normal-case hover:text-white px-5 text-base font-semibold h-2/3  bg-white border-2 border-[#2ECA7F] text-[#2ECA7F] ">
-            <FiFilter></FiFilter>
-            <button onClick={handleFilter}>Filter</button>
+          <div>
+            <button
+              className="flex gap-3 items-center rounded-md hover:bg-[#2ECA7F] normal-case hover:text-white px-5 text-base font-semibold h-2/3  bg-white border-2 border-[#2ECA7F] text-[#2ECA7F] "
+              onClick={handleFilter}
+            >
+              <FiFilter className="inline"></FiFilter> Filter
+            </button>
           </div>
         </div>
 

@@ -10,11 +10,14 @@ import BorrowedBooks from "../Pages/BorrowedBooks/BorrowedBooks";
 import BookDetails from "../Pages/Home/Category/BookDetails";
 import ReadStory from "../Pages/Home/Category/ReadStory";
 import UpdateBooks from "../Pages/UpdateBooks/UpdateBooks";
+import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -31,21 +34,37 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-Book",
-        element: <AddBooks></AddBooks>,
+        element: (
+          <PrivateRoute>
+            <AddBooks></AddBooks>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/all-Books/:id",
-        element: <UpdateBooks></UpdateBooks>,
+        element: (
+          <PrivateRoute>
+            <UpdateBooks></UpdateBooks>
+          </PrivateRoute>
+        ),
         loader: ({ params }) => fetch(`https://library-management-server-ashen.vercel.app/books/${params.id}`),
       },
       {
         path: "/all-Books",
-        element: <AllBooks></AllBooks>,
+        element: (
+          <PrivateRoute>
+            <AllBooks></AllBooks>
+          </PrivateRoute>
+        ),
         loader: () => fetch("https://library-management-server-ashen.vercel.app/books"),
       },
       {
         path: "/borrowed-Books",
-        element: <BorrowedBooks></BorrowedBooks>,
+        element: (
+          <PrivateRoute>
+            <BorrowedBooks></BorrowedBooks>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/:name",
@@ -54,7 +73,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/:category/:id",
-        element: <BookDetails></BookDetails>,
+        element: (
+          <PrivateRoute>
+            <BookDetails></BookDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) => fetch(`https://library-management-server-ashen.vercel.app/books/${params.id}`),
       },
       {
