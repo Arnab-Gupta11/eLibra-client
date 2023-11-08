@@ -35,6 +35,7 @@ const router = createBrowserRouter([
       {
         path: "/all-Books",
         element: <AllBooks></AllBooks>,
+        loader: () => fetch("https://library-management-server-ashen.vercel.app/books"),
       },
       {
         path: "/borrowed-Books",
