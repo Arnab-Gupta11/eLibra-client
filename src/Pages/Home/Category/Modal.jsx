@@ -1,25 +1,21 @@
 /* eslint-disable react/prop-types */
 import Swal from "sweetalert2";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+// import { useState } from "react";
 const Modal = ({ borrow, user, loadedData }) => {
   const { _id, name, image, rating, authore_name, quantity, short_description, category } = loadedData;
   const navigate = useNavigate();
-  const location = useLocation();
-  console.log(location.pathname);
   const handleBorrow = (e) => {
     e.preventDefault();
     const form = e.target;
-    // const userName = form.name.value;
+
     const email = form.email.value;
     const borrowDate = form.date.value;
-    // console.log(name, email, date);
+
     const currentDate = new Date();
     const currentDay = currentDate.toISOString().split("T")[0];
-    // console.log(currentDay);
-    // console.log(quantity)
 
-    // console.log(borrowBook);
     const updateBook = { name, image, rating, authore_name, quantity: quantity - 1, short_description, category };
     axios.put(`https://library-management-server-ashen.vercel.app/books/${_id}`, updateBook).then((res) => {
       console.log(res.data);

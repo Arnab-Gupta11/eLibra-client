@@ -1,14 +1,24 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Rating from "../../Shared/Rating/Rating";
 import Modal from "./Modal";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProviders";
+import axios from "axios";
 
 const BookDetails = () => {
   const { user } = useContext(AuthContext);
   // console.log(user.displayName);
   const loadedData = useLoaderData();
   const { _id, name, image, rating, authore_name, quantity, short_description, category } = loadedData;
+  const [exist, setExist] = useState([]);
+
+  useEffect(() => {
+    axios.get(`https://library-management-server-ashen.vercel.app/borrows?email=${user.email}`).then((res) => setExist(res.data));
+  }, [user.email]);
+  console.log(exist);
+  const isExist = exist.find((obj) => obj.book_id === _id) || "";
+  console.log(isExist?.book_id || "hello");
+
   return (
     <div className="bg-[#F6F9FF] min-h-screen">
       <div className="max-w-screen-lg mx-auto pt-20">
@@ -41,7 +51,7 @@ const BookDetails = () => {
               <button
                 className="rounded-md hover:bg-[#2ECA7F] normal-case hover:text-white px-7 text-base font-semibold py-2 bg-white border-2 border-[#2ECA7F] text-[#2ECA7F] mt-3 "
                 onClick={() => document.getElementById("borrow").showModal()}
-                disabled={quantity === 0}
+                disabled={quantity === 0 || isExist?.book_id === _id}
               >
                 Borrow
               </button>
