@@ -17,7 +17,7 @@ const UpdateBooks = () => {
     const updateBook = { image, name, authore_name, rating, category };
     console.log(updateBook);
     // Send data to the server
-    axios.put(`http://localhost:5000/books/${_id}`, updateBook).then((res) => {
+    axios.put(`https://library-management-server-ashen.vercel.app/books/${_id}`, updateBook).then((res) => {
       if (res.data.modifiedCount > 0) {
         Swal.fire({
           title: "Success!",

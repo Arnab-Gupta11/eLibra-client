@@ -6,7 +6,7 @@ const ReviewCard = ({ reviewCard }) => {
   return (
     <div>
       <div>
-        <div className="relative flex mt-5 ml-5 flex-col bg-white text-gray-700 rounded-md shadow-xl shadow-blue-300">
+        <div className="relative flex w-96 mt-5 ml-5 flex-col bg-white text-gray-700 rounded-md shadow-xl shadow-blue-300">
           <div className="mb-6 px-5 h-32 ">
             <h2 className="text-amber-400 text-2xl my-5">
               <Rating rating={rating}></Rating>

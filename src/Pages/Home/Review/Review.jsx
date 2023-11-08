@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import ReviewCard from "./ReviewCard";
 // import Marquee from "react-fast-marquee";
-import { Swiper, SwiperSlide } from "swiper/react";
-
+// import { Swiper, SwiperSlide } from "swiper/react";
+import Marquee from "react-fast-marquee";
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
+// import "swiper/css";
+// import "swiper/css/pagination";
+// import "swiper/css/autoplay";
 // import required modules
-import { Autoplay } from "swiper/modules";
+// import { Autoplay } from "swiper/modules";
 
 import axios from "axios";
 const Review = () => {
@@ -33,20 +33,11 @@ const Review = () => {
             </h2>
           </div>
           <div className="">
-            <Swiper
-              slidesPerView={3}
-              spaceBetween={30}
-              modules={[Autoplay]}
-              autoplay={{
-                delay: 3000,
-              }}
-            >
+            <Marquee pauseOnHover="ture">
               {reviews?.map((review) => (
-                <SwiperSlide key={review._id}>
-                  <ReviewCard reviewCard={review}></ReviewCard>
-                </SwiperSlide>
+                <ReviewCard key={review._id} reviewCard={review}></ReviewCard>
               ))}
-            </Swiper>
+            </Marquee>
           </div>
         </div>
       </div>
