@@ -10,4 +10,4 @@
 - user can toggle between dark and light mode
 # Technology used in this project
   [![My Skills](https://skillicons.dev/icons?i=html,css,js,react,tailwind,express,mongodb,firebase&perline=6)](https://skillicons.dev)
-# Live Site: http://guttural-respect.surge.sh/
+# Live Site: https://elibrary2.netlify.app/
